@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table border="1">
+    <tr>
+      <th>상품명</th>
+      <th>가격</th>
+    </tr>
+    <tr>
+    <td>연필</td>
+    <td>1000원</td>
+    </tr>
+    <tr>
+      <td>공책</td>
+      <td>2000원</td>
+    </tr>
+  </table>
+
+  <label for="item">물건</label>
+  <select name="item" id="item">
+    <option value="1000">연필 : 1000원</option>
+    <option value="2000">공책 : 2000원</option>
+  </select>
+
+  <label for="amount">수량</label>
+  <input type="text" id="amount">
+
+  <button onclick="count()">결제</button>
+
+  <p>총 금액 : <span id="rsult"></span></p>
+
+  <script>
+    function count() {
+      let item = parseInt(document.getElementById("item").value);
+      let amount = parseInt(document.getElementById("amount").value);
+
+      let total = item * amount;
+
+      document.getElementById("rsult").innerHTML = total + "원 입니다.";
+    }
+  </script>
+
+</body>
+</html>
