@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 반복문
+      1. for : 특정 코드 블록을 정해진 횟수만큼 반복해서 실행하는 문장
+      2. 동작원리 및 문법
+         for ( 1초기식 ; 2조건식 ; 3증감식 ){코드 블록}
+         => 1 2 참이면 코드 블록 3 2 참이면 코드 블록 3 2 참이면 코드 블록 3.......거짓이면 종료
+      3. interable객체(배열)와 많이 사용*/
+      let brand = ["애플", "구글", "삼성", "마이크로소프트"];
+      console.log(brand[0]);
+      console.log(brand[1]);
+      console.log(brand[2]);
+      console.log(brand[3]);
+
+      for (let i = 0; i > brand.length; i++) {
+        console.log(brand[i]);
+      }
+
+      const drinkList = [
+        { name: "오렌지", price: 1000 },
+        { name: "파워에이트", price: 1200 },
+        { name: "커피", price: 700 },
+        { name: "보리음료", price: 1200 },
+        { name: "코키콜라", price: 1800 },
+      ];
+      inputCoin = 1000;
+      for (let i = 0; i < drinkList.length; i++) {
+        if (drinkList[i].price <= inputCoin) {
+          console.log(drinkList[i].name);
+        }
+      }
+
+      // 1) 한 줄로 나오도록
+      let answer = "";
+      for (let i = 0; i < drinkList.length; i++) {
+        if (drinkList[i].price <= inputCoin) {
+          answer += drinkList[i].name + " ";
+          console.log(answer + (end = " ")); // 출력 결과 : 오렌지 커피
+        }
+      }
+
+      // 2) 한 줄로 나오도록
+      let drinkName = []; // 구입가능한 name을 받을 빈 배열
+      for (let i = 0; i < drinkList.length; i++) {
+        if (drinkList[i].price <= inputCoin) {
+          drinkName.push(drinkList[i].name);
+        }
+      }
+      console.log(drinkName.join("")); // 출력 결과 : 오렌지 커피
+
+      // break : 조건문이나 반복문을 중단
+      for (let i = 0; i < 10; i++) {
+        if (i == 5) {
+          break;
+        }
+        console.log(i);
+      }
+      // continue : 단계를 진행하지 않고 다음 step으로 넘어감
+      for (let i = 0; i < 10; i++) {
+        if (i == 5) {
+          continue;
+        }
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>
