@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for - in : odject나 배열에서 사용
+      /* 
+      for(let i 객체이름){
+        i : 인덱스
+      }
+         */
+      // 1. 배열에서 사용하는 경우
+      let brands = ["애플", "구글", "삼성", "마이크로소프트", "테슬라"];
+      for (let i in brands) {
+        console.log(i);
+        console.log(brands[i]);
+      }
+
+      //2. 객체에서 사용하는 경우
+      let person = {
+        name: "홍길동",
+        age: 22,
+        tel: "010-0000-1111",
+        city: "Seoul",
+      };
+
+      // 2-1. 키 출력
+      for (const key in person) {
+        // key값이 변하지는 않을거니까 const로 해도 괜찮을거 같다
+        console.log(key);
+      }
+
+      // 2-2. 값 출력
+      for (const key in person) {
+        console.log(key, " : ", person[key]);
+      }
+
+      // 2-3. 알고 싶은 값의 키를 입력(prompt)받아, 키에 대한 값을 출력하는 코드 작성
+      let inputKey = prompt("알고 싶은 값을 입력하세요");
+      for (const key in person) {
+        if (inputKey) {
+          if (key === inputKey) {
+            console.log(key, ":", person[key]);
+          }
+        } else {
+          console.log("올바른 키를 입력하세요");
+        }
+      }
+    </script>
+  </body>
+</html>
