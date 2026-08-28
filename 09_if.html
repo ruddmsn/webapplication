@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      let age = +prompt("나이를 입력하세요");
+      let num;
+      if (age <= 6 || age >= 70) {
+        num = "무료";
+      } else if (age < 12) {
+        num = 450;
+      } else if (age < 18) {
+        num = 700;
+      } else {
+        num = 1000;
+      }
+      console.log(num);
+      */
+
+      // false : false, undefined, null, 0, "", NaN
+      // 위의 것을 제외하면 모두 true
+      let x = null;
+      if (x) {
+        // if (x)면 true이기 때문에 if구문 실행
+        // undefined => 거짓
+        console.log("if구문 실행");
+      } else {
+        console.log("else구문 실행");
+      }
+    </script>
+  </body>
+</html>
