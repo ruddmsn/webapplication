@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="n1">숫자1</label>
+    <!-- label 태그 : 설명(청각장애인들이 소리로 설명을 들을 수 있다) -->
+    <input type="number" id="n1" /> <br />
+    <!-- input 태그 : 사용자로부터 입력을 받는 태그 -->
+    <!-- id : 자바스크립트가 어떤 태그인지 인지할 수 있도록 도와준다(그래서 id는 반드시 고유해야 한다) -->
+    <label for="n2">숫자2</label>
+    <input type="text" id="n2" />
+
+    <button onclick="doSum()">합</button>
+    <!-- 인라인 이벤트(대부분 on...이다) -->
+
+    <p>결과 : <span id="result"></span></p>
+
+    <script>
+      const doSum = () => {
+        // 1. 변수 1 읽어오기
+        let number1 = parseInt(document.getElementById("n1").value); // Element(요소)
+
+        // 2. 변수 2 읽어오기 => 숫자로 변환
+        let number2 = parseInt(document.getElementById("n2").value);
+
+        // 3. 더하기
+        let sum = number1 + number2;
+    
+        // 4. 화면에 뿌려(랜더링)
+        document.getElementById("result").innerHTML = sum;
+      };
+
+      // Number 객체 내장 함수
+      let num = 333;
+      console.log(num);
+      // 1. 문자열로 변환 함수
+      let strNum = num.toString(); // toString : 문자열로 변환하는 메소드
+      console.log(strNum);
+
+      // 2. 문자열을 숫자로 변환하는 함수
+      // parseInt(), parseFloat() => 전역함수: 속한 주인(?)객체 window
+      console.log(parseInt(strNum)); // parseInt 앞에 원래 window가 있지만 전역객체는 생략이 가능하기 때문에 안써도 가능하다
+      console.log(parseInt(12.33)); // 12
+      console.log(parseInt(12.77)); // 12 => 반올림하지 않고 소숫점을 버린다.
+      console.log(parseInt("10")); // 10
+      console.log(parseInt("10 20 30 40")); // 10
+      console.log(parseInt("2학년 3반")); // 2
+      console.log(parseInt("echo")); // NaN
+
+      let f = "10.4567";
+      console.log(f); // 문자열
+      console.log(parseFloat(f)); // 숫자로 바꿔줌
+
+      // 3. toFixed() : 소수점 몇자리까지 보여줄지를 결정
+      f = 10.4567;
+      console.log(f.toFixed(0)); // 10
+      console.log(f.toFixed(1)); // 10.5 => 2자리에서 반올림
+      console.log(f.toFixed(2)); // 10.46 => 3자리에서 반올림
+      console.log(f.toFixed(3)); // 10.457 => 4자리에서 반올림
+
+      // 4. toExponential() : 지수표기법으로 표현 => 거의 사용 안함
+      console.log(f.toExponential(2));
+
+      // 5. toPrecision() : 정수보와 소수부 합쳐서 => 거의 사용 안함
+      console.log(f.toPrecision(5));
+    </script>
+  </body>
+</html>
