@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // switch : 상수값만 비교
+      // new Date()객체 => 인스턴스 객체 now 생성
+      const now = new Date(); // Date() : 현재 시간
+      console.log(now);
+      // getDay() : 요일 리턴
+      let d = now.getDay(); // getDay() : 현재 요일 ex) 월요일(1), 화요일(2), 일요일(0)
+      console.log(d);
+
+      // 활용 : 오늘이 무슨 요일인지 리턴하는 조건문을 switch로 작성하시오
+      let today; // today데이터타입 : 객체 객체는 키와 벨류로 구성
+      /* switch (d) {
+        case 0:
+          today = "일요일";
+        case 1:
+          today = "월요일";
+        case 2:
+          today = "화요일";
+        case 3:
+          today = "수요일";
+        case 4:
+          today = "목요일";
+        case 5:
+          today = "금요일";
+        case 6:
+          today = "토요일";
+          break;
+      }
+          */
+
+      // 위의 예제를 두 줄로 변환(조건 삼함연산자)
+      let day = ["일", "월", "화", "수", "목", "금", "토"]; // 배열은 인덱스를 가짐
+      console.log(day[d]);
+
+      let t = {
+        0:"일",
+        1:"월",
+        2:"화",
+        3:"수",
+        4:"목",
+        5:"금",
+        6:"토",
+      };
+      console.log(t[d] + "요일");
+    </script>
+  </body>
+</html>
