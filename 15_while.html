@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // while : 조건이 참인 동안 반복, 무한루프에 빠지지 않도록 조심
+      let i = 1; // 초기식
+      while (i <= 10) {
+        // 조건식
+        console.log(i);
+        i++; // 증감식
+      }
+
+      // 동전을 교환하는 코드
+      let inputCoin = 7000;
+      let coinUnit = 500;
+      let cnt = 0;
+      // 동전 14개, 나머지는 0원
+      while (inputCoin >= coinUnit) {
+        inputCoin -= coinUnit;
+        cnt++;
+      }
+      console.log("동전 개수:", cnt, "개", "거스름돈:", inputCoin, "원");
+      // do while을 사용하면 안되는 이유는 do while은 거짓이여도 실행을 하기 때문에 while을 사용해야 한다.
+
+      // do~while : 무조건 한 번은 실행
+      i = 0
+      do{
+        console.log(i);
+        i++;
+      }while(i < 10)
+    </script>
+  </body>
+</html>
