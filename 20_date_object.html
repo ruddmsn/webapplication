@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 오늘을 기준으로 7일전 ! 오늘까지 표현 -->
+    <input type="date" name="" id="startDate" />
+    <!-- name은 서버 id는 스크립트 -->
+    <input type="date" name="" id="endDate" />
+    <script src="./js/common.js"></script>
+    <script>
+      // 1. 오늘 날짜 정보 가져오기
+      let now = new Date();
+      console.log(now); // Tue Jun 16 2026 11:02:50 GMT+0900 (한국 표준시)
+
+      // 2. 년, 월(0~), 일, 시간, 분, 초로 생성 가능
+      let d = new Date(1993, 2, 22, 18, 10, 30);
+      console.log(d); // Mon Mar 22 1993 18:10:30 GMT+0900 (한국 표준시)
+      // 월은 0부터 시작하기 때문에 만약 3월이라고 하면 2월이라고 해야함
+
+      // 3. get() : 날짜에 대한 각종 정보값을 얻어오는 함수
+      let year = now.getFullYear();
+      let month = now.getMonth(); // 월(0~)
+      let day = now.getDate();
+      let dayName = now.getDay(); // 요일(0~)
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      let second = now.getSeconds();
+      console.log(year, month + 1, day, dayName, hour, minute, second); // 2026 6 16 2 11 51 35
+
+      // 4. set() : get에 상용해서 모두 존재하나 거의 사용하지 않는다.
+
+      // 5. 오늘 날짜를 구해서 YYYY-MM-DD포맷으로 id = "endDate"에 출력
+      const today = year + '-' + (month + 1).toString().padStart(2, 0) + '-' + day.toString().padStart(2, 0);
+      console.log(today); // 2026-06-16
+      document.getElementById('endDate').value = today;
+
+      // 6. new Date(밀리초) : 밀리초에 해당하는 날짜 구하기
+      let thatDay = new Date(0); // 밀리초
+      console.log(thatDay); // Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시)
+
+      // 7. getTime : 특정 시간의 밀리초를 구하는 내장 함수
+      let nowMilliSec = now.getTime();
+      console.log(nowMilliSec); // 1782784310675
+
+      // 8. 현재의 밀리초 - n일 전의 밀리초
+      let oneDay = 24 * 60 * 60 * 1000;
+      let sevenDaysAgo = new Date(nowMilliSec - oneDay * 7);
+      console.log(sevenDaysAgo); // Tue Jun 23 2026 10:55:52 GMT+0900 (한국 표준시)
+
+      // 9. 오늘을 기준으로 7일 전을 YYYY-MM-DD포맷으로 id = "startDate"에 출력
+      console.log(nDaysAgoFunc(8)); // 8일 후 7월 8일
+      console.log(nDaysAgoFunc(-7)); // 7일 전 6월 23일
+
+      // 10. 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수(년도를 2자리 또는 4자리로 받을 경우)
+      const nDaysAgoFunc2 = (day, format) => {
+        let now = new Date();
+        let oneDay = 24 * 60 * 60 * 1000;
+
+        let nowDay = new Date(now.getTime() + day * oneDay);
+
+        let y = nowDay.getFullYear();
+        let m = nowDay.getMonth() + 1;
+        let d = nowDay.getDate();
+
+        let yy = ('' + y).slice(2);
+
+        m = String(m).padStart(2, '0');
+        d = String(d).padStart(2, '0');
+
+        if (format === 'YYYY-MM-DD') {
+          return y + '-' + m + '-' + d;
+        }
+
+        return yy + '-' + m + '-' + d;
+      };
+      console.log(nDaysAgoFunc2(8, 'YYYY-MM-DD')); // 2026-07-08
+      console.log(nDaysAgoFunc2(-7, 'YY-MM-DD')); // 26-06-23
+
+      // 11. 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수(년도를 4자리로 받을 경우)
+      // YYYY-MM-DD, YYYY.MM.DD, YYYY/MM/DD.....
+      console.log(nDaysAgoFunc3(8, 'YYYY/MM/DD')); // 2026/07/08
+      console.log(nDaysAgoFunc3(-7, 'YYYY.MM.DD')); // 2026.06.23
+    </script>
+  </body>
+</html>
