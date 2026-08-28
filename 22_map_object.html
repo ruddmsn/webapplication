@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // object
+      let oPerson = {};
+      oPerson.name = "강태인";
+      oPerson.email = "kang@gmail.com";
+      oPerson.phone = "010-1234-5678";
+      oPerson["180"] = 75;
+
+      // 객체 출력 => 키 : 값, 요소 갯수 : 개
+      let count = 0;
+      for (const key in oPerson) {
+        console.log(`${key} : ${oPerson[key]}`);
+        count++;
+      }
+      console.log(`총 요소의 갯수 : ${count}`);
+
+      // 1. map생성
+      let personMap = new Map();
+
+      // 2. set() : map 요소 추가
+      personMap.set("name", "강태인");
+      personMap.set("email", "kang@gmail.com");
+      personMap.set("phone", "010-1234-5678");
+      personMap.set(180, 75);
+
+      // 3. 출력 forEach : 파라미터 순서 조심, 출력 순서 보장
+      personMap.forEach((value, key) => {
+        console.log(`${key} : ${value}`);
+      });
+
+      // 4. size 속성 지원
+      console.log(`요소 갯수 : ${personMap.size}개`); // 요소 갯수 : 4개
+
+      // 5. keys() : 키 가져오기 => name, email, phone, 180
+      for (let key of personMap.keys()) {
+        console.log(key);
+      }
+
+      // 6. values() : 값 가져오기 => 강태인.......
+      for (let value of personMap.values()) {
+        console.log(value);
+      }
+
+      // 7. get() : 키를 주고 값을 읽어오기, 
+      console.log(personMap.get(180)); // 75
+
+      // 8. has() : 키의 존재여부
+      console.log(personMap.has("hobby")); // false
+      console.log(personMap.has("name")); // true
+
+      // 9. delete(키) : 해당 요소를 삭제
+      personMap.delete("email");
+      console.log(`요소 갯수 : ${personMap.size}개`); // 요소 갯수 : 3개
+
+      // 10. clear() : 전체 삭제
+      // personMap.clear();
+    </script>
+  </body>
+</html>
