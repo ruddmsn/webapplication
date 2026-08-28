@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 할당연산자(사칙연산, 나머지, 제곱근) : 뒤에 있는걸 앞으로 배정, 할당(assignment)
+      let x = 3;
+      let y = 2;
+      x = x + y;
+      console.log(x); // 5
+      x = x - y;
+      console.log(x); // 3
+      x = x * y;
+      console.log(x); // 6
+      x = x / y;
+      console.log(x); // 3
+      x = x % y;
+      console.log(x); // 3 % 2 몫:1 나머지:1
+      x = 3;
+      y = 2;
+      z = x ** y;
+      console.log(z); // 9 제곱, 제곱근(sqrt)
+
+      // 2. 복합 할당 연산자(+=, -=, *=, /=, %=)
+      x = 4;
+      y = 5;
+      console.log((x += y)); // x = x+y, x출력 9
+      console.log((x -= y)); // x = x-y, x출력 4
+      console.log((x *= y)); // x = x*y, x출력 20
+      console.log((x /= y)); // x = x/y, x출력 4
+      console.log((x %= y)); // x = x%y, x출력 4
+
+      // 3. 비교 연산자 : 어떤 값들을 비교 > < >= <= == === != !==
+      let a = 3;
+      let b = "3";
+      console.log(a == b); // true 매우 유연하기 때문에 타입이 달라도 같다고 판단(장점이자 단점)
+      console.log(1 === b); // false === : 타입과 값을 비교 == : 값만 비교
+      console.log(a != b); // false
+      console.log(a !== b); // true
+
+      // 4. 산술연산자 : ++ (증가, 위치에 유의) --(감소, 위치에 유의) - (단항 부정 => 부호를 바꿈) + (숫자화)
+      x = 5;
+      y = ++x;
+      console.log(y); // 6 먼저 x를 증가시키고 대입
+      console.log(x); // 6
+      y = x++;
+      console.log(y); // 6 대입 후 증가
+      console.log(x); // 7
+
+      x = 5;
+      y = x--;
+      console.log(y); // 5
+      console.log(x); // 4
+
+      x = 5;
+      y = --x;
+      console.log(y); // 4
+      console.log(x); // 4
+
+      x = -3;
+      console.log(x); // -3
+      console.log(-x); // 3
+
+      x = "3";
+      z = 5;
+      console.log(x + z); // 35
+      y = +x;
+      console.log(y + z); // 8
+
+      let n = prompt("첫 번째 수 입력");
+      let m = prompt("두 번째 수 입력");
+
+      console.log(+m + +n); // 수를 더할려면 앞에 +를 넣어줘야 한다 만약 넣지 않으면 그냥 옆에 숫자가 붙는다.
+
+      // 5. 논리 연산자 : 여러가지 조건을 만족시키는지 확인
+      // &&(and : 둘 다 참이어야 참), ||(or : 둘 중 하나만 참이면 참)
+
+      let o = true && false; // false
+      o = 3 > 2 && 4 > 7; // false
+      o = 3 > 2 && 8 > 7; // true
+      o = true || false; // true
+      o = 3 > 2 || 4 > 7; // true
+      o = 3 > 4 || 4 < 2 || 2 > 1; // true
+
+      // 6. 문자열 연산자 : + (concate)
+      let firstName = "John";
+      let lastName = "Bacon";
+      let fullName = firstName + lastName;
+      console.log(fullName);
+
+      // 7. 조건 삼항 연산자 : 조건 ? 참 : 거짓; (실무에서는 자주 사용하진 않음)
+      // if~ else~, 중첩가능
+      let age = 16;
+      let isAdult = age >= 20 ? "성인" : "미성년자";
+      console.log(isAdult);
+
+      // 활용 : 90점 이상이면 "A", 80점 이상이면 "B", 70점 이상이면 "C", 60점 이상이면 "D", 나머지는 "E"
+      let score = prompt("점수를 입력하세요"); // + prompt("점수를 입력하세요") 아니여도 입력 받을 수 있다
+      let grade =
+        score >= 90
+          ? "A"
+          : score >= 80
+            ? "B"
+            : score >= 70
+              ? "C"
+              : score >= 60
+                ? "D"
+                : "E";
+      console.log(grade); 
+    </script>
+  </body>
+</html>
