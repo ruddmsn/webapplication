@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. slice() 실무 활용 예제
+      // 1-1. 긴 문자열 ...로 나타내기
+      const longString =
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+      const truncateTitle = (title, maxLength) => {
+        if (title.length > maxLength) {
+          return title.slice(0, maxLength) + "....";
+        } else {
+          return title;
+        }
+      };
+      console.log(truncateTitle(longString, 10));
+      // 1-2. 전화번호 4자리 '****'마스킹
+      let phoneNumber = "010-549-5678";
+      let hiddenNumber = phoneNumber.slice(-1, 4);
+      +"****";
+      console.log(hiddenNumber);
+
+      //   2. replace() 실무 활용 예제 => Jeju를 다 바꾸고 싶어(정규식)
+      //   2-1. db에 저장 => '-'없이, 프론트
+      /* 정규식(regular expression)
+      - / /사이에 작성
+      - D : 숫자
+      - \ : not
+      - option : g => 모두*/
+      phoneNumber = "010-1234-5678";
+      const clearNumber = phoneNumber.replace(/\D/g, "");
+      console.log(clearNumber);
+
+      let str = "Welcome Jeju!! Jeju!!";
+      console.log(str.replace(/Jeju/g, "Seoul"));
+      /* phoneNumber = "010-1234-5678";
+        const clearNumber = (num) => {
+          while (num.indexOf("-") != -1) {
+            num = num.replace("-", " ");
+          }
+          return num;
+        };
+        console.log(clearNumber(phoneNumber)); // 01012345678 */
+
+      // 3. padStrat() 실무 활용 예제
+      // 카드번호(16) 읽어와서 앞자리를 마스킹하고 싶은 경우
+      const cardNumber = "5432";
+      const mackCardNumber = cardNumber.padStart(16, "*");
+      console.log(mackCardNumber);
+
+      // 4. charAt() 실무 활용 예제
+      // 주민등록번호 091215-3057842 => 남자
+      // 주민등록번호 6, charAt(7) 번째자리의 숫자를 보고 성별 판단
+      // 남자 : 1, 3, 5(외국인), 7(외국인) 여자 : 2, 4, 6(외국인), 8(외국인)
+      const checkGender = (sn) => {
+        let gendercode = sn.charAt(7);
+        let check = "";
+        if (gendercode == 1 || gendercode == 3) {
+          check = "내국인 남성입니다.";
+        } else if (gendercode == 5 || gendercode == 7) {
+          check = "외국인 남성입니다.";
+        } else if (gendercode == 2 || gendercode == 4) {
+          check = "내국인 여성입니다.";
+        } else if (gendercode == 6 || gendercode == 8) {
+          check = "외국인 여성입니다.";
+        } else {
+          check = "알 수 없음";
+        }
+        // return;만 하면 undefined가 나오기 때문에 뒤에 check를 붙여야 한다
+        return check;
+      };
+      console.log(checkGender("091215-3057842")); // 내국인 남성
+      console.log(checkGender("671215-2057842")); // 내국인 여성
+
+      // 5. split() 실무 활용 예제
+      // 5-1. 쇼핑몰 사이트 등에서 카테고리나 아이템 이름 등 특정한 데이터를 뽑아낼 경우
+      const url = "https://myshop.com/products/electronics/iphone15";
+      const pageSegment = url.split("/");
+      // console.log(pageSegment);
+      let size = pageSegment.length;
+      let categoryName = pageSegment[size - 2];
+      let itemName = pageSegment[size - 1];
+      console.log(`카테고리 : ${categoryName}`); // `은 쓴 그대로 바로 화면에 보여줌
+      console.log(`품명 : ${itemName}`);
+
+      // ********************5-2. 로그 파일에서 특정한 데이터를 뽑아낼 경우********************
+      const csvDate =
+        "2026-04-29,Login_Success,user_01\n2024-04-29,Login_Fail,user_02";
+      const logData = csvDate.split("\n");
+      // console.log(logData);
+      // 허가받지 않은 사람(Login_Fail)을 찾아내기
+      for (line of logData) {
+        [data, status, userId] = line.split(","); // ***** [data, status, userId] 배열 구조 분할 할당 *****
+        if (status === "Login_Fail") {
+          console.log(
+            `허가받지 않은 사용자 ${userId}가 ${data}에 로그인을 시도하였습니다.`,
+          );
+        } else if (status === "Login_Success") {
+          console.log(
+            `로그인을 ${userId}가 ${data}가 로그인을 성공하였습니다.`,
+          );
+        }
+      }
+
+      // 6. endsWith() 실무 활용 예제
+      // 특정 파일의 형식을 찾거나 업로드 등에 제한을 하는 경우
+      // jpg, png 만 업로드를 허용한다고 가정하자
+      const checkFile = (fileName) => {
+        let fn = fileName.toLowerCase(); // 대문자를 소문자로 변환하는 코드
+        let check = "";
+
+        if (fn.endsWith(".jpg") || fn.endsWith(".png")) {
+          check = "업로드 가능";
+        } else {
+          check = "업로드 불가능";
+        }
+        return check;
+      };
+      console.log(checkFile("abc.JPG")); // 업로드 가능
+      console.log(checkFile("def.gif")); // 업로드 불가능
+    </script>
+  </body>
+</html>
