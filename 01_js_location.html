@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 반응형 태그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트의 위치</title>
+    <!-- 파일의 위치 지정
+     1. 절대 경로 : c:\mirim\백현정\js\01_js_location.js (Root부터)
+     2. 상대 경로 : 나(현재파일)를 기준으로 .(현재파일이 속해있는 폴더) ..(현재파일이 속해있는 폴더의 부모폴더)-->
+    <script src="./js/01_js_location.js" defer></script>
+    <!-- defer : 실행을 뒤로 보내줌-->
+    <script>
+      window.document.write("head에 삽입\n"); // window객체 아래 document객체 아래...
+      document.write("Hello World");
+    </script>
+  </head>
+  <body>
+    <!-- 
+    자바스크립트의 위치
+     1. <head>
+     2. <body>
+     3. 외부
+     4. 인라인(X)
+    -->
+    <script>
+      document.write("body에 삽입");
+      document.write("Hello World");
+    </script>
+    <button onclick=""></button>
+  </body>
+</html>
